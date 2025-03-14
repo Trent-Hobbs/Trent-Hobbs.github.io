@@ -1,0 +1,105 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IM Fell English', serif;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+header {
+    background-color: #262626;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+header a {
+    color:rgb(226, 226, 226);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+main {
+    max-width: 900px;
+    margin: auto;
+    background: #262626;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.section-container {
+    margin-bottom: 25px;
+    padding: 15px;
+    background:rgb(19, 19, 19);
+    border-radius: 8px;
+}
+
+.section-container h2 {
+    color:rgb(177, 177, 177);
+    margin-bottom: 10px;
+}
+
+.section-container p {
+    font-size: 1.1rem;
+}
+
+.tools p {
+    background: #1f2833;
+    padding: 8px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border-radius: 5px;
+    border: 0px solid #80004;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+.caption {
+    font-style: italic;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #c5c6c7;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background:rgb(39, 39, 39);
+    border-radius: 10px;
+}
+
+.contact-me a {
+    color:rgb(206, 206, 206);
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.contact-me .social-btn {
+    font-size: 1.5rem;
+}
+
+.contact-me .social-btn:hover {
+    color: #ffffff;
+}

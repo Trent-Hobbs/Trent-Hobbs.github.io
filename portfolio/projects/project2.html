@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="'viewport" content="'width=device-width, intitial-scale=1.0">
+  <title>Trentavius</title>
+  <link rel="stylesheet" href="../projectstyles.css" >
+  <link rel="stylesheet" href="../styles.css" >
+  <script src="https://kit.fontawesome.com/10c1b1ca0a.js" crossorigin="anonymous"></script>
+<body>
+  <header>
+    <h1>PoisonedCredentials Lab</h1>
+    <a href="../cyberDefender.html">Back to Home</a>
+  </header>
+  <main>
+  <section class="project-details">
+    <h2>Scenario </h2>
+    <p>Your organization's security team has detected a surge in suspicious network activity. 
+      There are concerns that LLMNR (Link-Local Multicast Name Resolution) and NBT-NS 
+      (NetBIOS Name Service) poisoning attacks may be occurring within your network. 
+      These attacks are known for exploiting these protocols to intercept network traffic 
+      and potentially compromise user credentials. Your task is to investigate the network 
+      logs and examine captured network traffic.</p>
+    
+      <div class="section-container">
+        <h2>Tools Used</h2>
+        <div class="tools">
+          <p>Wireshark</p>
+        </div>
+      </div>
+
+    <!-- Screenshot 1 with Description -->
+    <div class="section-container">
+      <h2>Question 1: Mistyped Query</h2>
+      <p>
+        Understanding the LLMNR and NBT-NS protocol is critical for the completion of this lab. 
+      </p>
+      <p>
+        Link-Local Multicast Name Resolution (LLMNR) is a name resolution protocol used in local 
+        networks when DNS is unavailable. It allows devices to resolve names to IP addresses 
+        without a central DNS server. However, due to its lack of authentication, attackers can 
+        exploit LLMNR by responding with spoofed IP addresses, leading to traffic interception 
+        or credential theft.
+      </p>
+      <p>
+        The NetBIOS Name Service (NBT-NS) is an older name resolution protocol used in legacy 
+        Windows networks to map NetBIOS names to IP addresses. Like LLMNR, NBT-NS lacks 
+        authentication, making it vulnerable to spoofing attacks where malicious actors 
+        can redirect traffic or harvest credentials through network poisoning techniques.
+      </p>
+      <p>
+        In the scenario description we are told that LLMNR and NBT-NS is being targeted 
+        so by filtering for them we can find the mistyped query. Ex. ip.src==192.168.232.162 and nbns
+      </p>
+      <img src="../images/poisonedcreds/pc1.1.png" alt="Network Scanning Results">
+      <p class="caption">Figure 1: Results of filtered search</p>
+      <img src="../images/poisonedcreds/pc1.3.png" alt="Network Scanning Results">
+      <p class="caption">Figure 2: Question 1</p>
+    </div>
+
+    <div class="section-container">
+      <h2>Question 2: Rogue IP Address</h2>
+      <p>
+        We know this is a poisoning attack so we should look for the mistyped query's response. 
+        The attacker is trying to intercept this response so we can find the IP of the rogue machine.
+      </p>
+      <img src="../images/poisonedcreds/pc2.1.png" alt="Network Scanning Results">
+      <p class="caption">Figure 3: Response of mistyped query</p>
+      <img src="../images/poisonedcreds/pc1.2.png" alt="Network Scanning Results">
+      <p class="caption">Figure 4: Question 2</p>
+    </div>
+
+      <!-- Screenshot 2 with Description -->
+      <div class="section-container">
+        <h2>Question 3: Secondary Target</h2>
+        <p>
+          You can find all the interactions between each IP in statistics > conversations > 
+          IPv4. The rogue IP has only interacted with one other IP address. 
+        </p>
+        <img src="../images/poisonedcreds/pc3.2.png" alt="Network Scanning Results">
+        <p class="caption">Figure 5: Results of the statistics > conversations > IPv4</p>
+        <img src="../images/poisonedcreds/pc3.1.png" alt="Network Scanning Results">
+        <p class="caption">Figure 6: Question 3</p>
+      </div>
+
+    <!-- Screenshot 3 with Description -->
+    <div class="section-container">
+      <h2>Question 4: Comprimised Username</h2>
+      <p>
+       The SMB protocol integrates NT LAN Manager authentication which can contain information about 
+       the session. In our case the most relevant is the session setup response with contains the 
+       username. ip.dst==192.168.232.215 and smb2 isolates the rogue machine. 
+      </p>
+      <img src="../images/poisonedcreds/pc4.2.png" alt="Network Scanning Results">
+      <p class="caption">Figure 7: Results of SMB </p>
+      <img src="../images/poisonedcreds/pc4.1.png" alt="Network Scanning Results">
+      <p class="caption">Figure 8: Question 4</p>
+    </div>
+
+      <!-- Screenshot 4 with Description -->
+      <div class="section-container">
+        <h2>Question 5: Target's Hostname</h2>
+        <p>
+          Continuing in this packet you can find more information about the session. The target info field shows the DNS computer name and thus the hostname.
+        </p>
+        <img src="../images/poisonedcreds/pc5.2.png" alt="Network Scanning Results">
+        <p class="caption">Figure 9: Target Info field</p>
+        <img src="../images/poisonedcreds/pc5.1.png" alt="Network Scanning Results">
+        <p class="caption">Figure 10: Question 5</p>
+      </div>
+
+  </section>
+</main>
+  <footer>
+    <div class="contact-me">
+      <a>Contact me here!</a>
+      <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="social-btn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/Trent-Hobbs" target="_blank" class="social-btn">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
