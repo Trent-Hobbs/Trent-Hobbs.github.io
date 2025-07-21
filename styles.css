@@ -180,7 +180,7 @@ nav ul li a:hover::after{
     padding: 50px 0;
 }
 .work-list{
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     grid-gap: 40px;
     margin-top: 50px;
@@ -191,8 +191,8 @@ nav ul li a:hover::after{
     overflow: hidden;
 }
 .work img{
-    width: 500px;
-    height: 500px;
+    width: 360px;
+    height: 360px;
     border-radius: 10px;
     display: block;
     transition: transform 0.5s;
@@ -379,7 +379,7 @@ nav .fa-solid{
         font-size: 50px;
     }
     .subtitle{
-        font-size: 40px;
+        font-size: 60px;
     }
     .about-col-1, .about-col-2{
         flex-basis: 100%;
@@ -388,17 +388,17 @@ nav .fa-solid{
         margin-bottom: 30px;
     }
     .about-col-2{
-        font-size: 14px;
+        font-size: 40px;
     }
     .tab-links{
-        font-size: 16px;
+        font-size: 42px;
         margin-right: 20px;
     }
     .tab-titles{
-        padding-top: 25px;
+        padding-top: 45px;
     }
     .tab-titles p{
-        font-size: 40px;
+        font-size: 60px;
     }
     .services-list{
         display: grid;
@@ -407,11 +407,28 @@ nav .fa-solid{
         margin-top: 50px;
         color: #ababab;
     }
+    .tab-contents{
+    display: none;
+    font-size: 40;
+} 
     .work-list{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
         grid-gap: 40px;
         margin-top: 50px;
+        justify-content: center;
+        align-items: center;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .work img{
+    width: 550px;
+    height: 550px;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
     }
     .layer {
         font-size: 50px;
@@ -419,17 +436,59 @@ nav .fa-solid{
     .layer p{
         font-size: 30px;
     }
+    .layer{
+    width: 550px;
+    height: 550px;
+    background: linear-gradient(rgba(0,0,0,0.6), hsl(351, 96%, 32%));
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 38px;
+    transition: height 0.5s;
+}
+.layer h3{
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.layer p{
+    font-size: 36px;
+}
+.layer a{
+    margin-top: 20px;
+    color: hsl(351, 96%, 32%);
+    text-decoration: none;
+    font-size: 38px;
+    line-height: 60px;
+    background: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+}
+.work:hover img{
+    transform: scale(1.1);
+}
+.work:hover .layer{
+    height: 100%;
+}
     .contact-left, .contact-right {
         flex-basis: 100%;
     }
     form input, form textarea{
-        font-size: 30px;
+        font-size: 45px;
     }
     form .btn2{
-        font-size: 25px;
+        font-size: 40px;
     }
     form .btn{
-        font-size: 25px;
+        font-size: 40px;
     }
     nav ul li a::after{
         content: '';
